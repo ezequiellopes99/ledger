@@ -83,6 +83,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
+    browser (6.0.0)
     builder (3.2.4)
     capybara (3.40.0)
       addressable
@@ -94,6 +95,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     chartkick (5.0.6)
+    childprocess (5.0.0)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     cpf_cnpj (0.5.0)
@@ -139,6 +141,16 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    launchy (3.0.1)
+      addressable (~> 2.8)
+      childprocess (~> 5.0)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
+    letter_opener_web (3.0.0)
+      actionmailer (>= 6.1)
+      letter_opener (~> 1.9)
+      railties (>= 6.1)
+      rexml
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -150,7 +162,6 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
     minitest (5.22.2)
     msgpack (1.7.2)
     mutex_m (0.2.0)
@@ -164,9 +175,6 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.2)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.16.2-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.2-x86_64-linux)
@@ -207,6 +215,11 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails_performance (1.2.2)
+      browser
+      railties
+      redis
+      redis-namespace
     railties (7.1.3)
       actionpack (= 7.1.3)
       activesupport (= 7.1.3)
@@ -222,6 +235,8 @@ GEM
       redis-client (>= 0.17.0)
     redis-client (0.20.0)
       connection_pool
+    redis-namespace (1.11.0)
+      redis (>= 4)
     regexp_parser (2.9.0)
     reline (0.4.2)
       io-console (~> 0.5)
@@ -255,6 +270,11 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (6.1.0)
       activesupport (>= 5.2.0)
+    sidekiq (7.2.4)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.19.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -262,8 +282,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.7.2)
-      mini_portile2 (~> 2.8.0)
     sqlite3 (1.7.2-aarch64-linux)
     sqlite3 (1.7.2-x86_64-linux)
     stimulus-rails (1.3.3)
@@ -289,13 +307,13 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (4.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.13)
 
 PLATFORMS
   aarch64-linux
-  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -312,18 +330,22 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  letter_opener_web (~> 3.0)
   puma (>= 5.0)
   rails (~> 7.1.3)
+  rails_performance
   redis (>= 4.0.1)
   rspec-rails
   selenium-webdriver
   shoulda-matchers
+  sidekiq (~> 7.2)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data
   web-console
+  will_paginate (~> 4.0)
 
 BUNDLED WITH
    2.4.8

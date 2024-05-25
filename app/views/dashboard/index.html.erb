@@ -7,31 +7,31 @@
         <table class="table">
           <tr>
             <td>Total de pagamentos</td>
-            <td class="text-end"><%= @total_payments %></td>
+            <td class="text-end"><%= @dashboard.total_payments %></td>
           </tr>
           <tr>
             <td>Total de débitos</td>
-            <td class="text-end"><%= @total_debts %></td>
+            <td class="text-end"><%= @dashboard.total_debts %></td>
           </tr>
           <tr>
             <td>Saldo</td>
-            <td class="text-end"><%= @balance %></td>
+            <td class="text-end"><%= @dashboard.balance %></td>
           </tr>
         </table>
 
         <h5 class="card-title">Maior saldo</h5>
         <table class="table">
           <tr>
-            <td><%= @top_person&.name %></td>
-            <td class="text-end"><%= @top_person&.balance %></td>
+            <td><%= @dashboard.top_person&.name %></td>
+            <td class="text-end"><%= @dashboard.top_person&.balance %></td>
           </tr>
         </table>
 
         <h5 class="card-title">Menor saldo</h5>
         <table class="table">
           <tr>
-            <td><%= @bottom_person&.name %></td>
-            <td class="text-end"><%= @bottom_person&.balance %></td>
+            <td><%= @dashboard.bottom_person&.name %></td>
+            <td class="text-end"><%= @dashboard.bottom_person&.balance %></td>
           </tr>
         </table>
         </div>
@@ -45,7 +45,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Associados</h5>
-        <%= pie_chart @active_people_pie_chart %>
+        <%= pie_chart @dashboard.active_people_pie_chart %>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
       <div class="card-body">
         <h5 class="card-title">Meus últimos cadastros</h5>
         <ul>
-          <% @my_people.each do |person| %>
+          <% @dashboard.my_people.each do |person| %>
             <li><%= person.name %></li>
           <% end %>
         </ul>
@@ -69,7 +69,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Últimos débitos</h5>
-        <%= line_chart @last_debts %>
+        <%= line_chart @dashboard.last_debts %>
       </div>
     </div>
   </div>
@@ -78,7 +78,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Últimos pagamentos</h5>
-        <%= line_chart @last_payments %>
+        <%= line_chart @dashboard.last_payments %>
       </div>
     </div>
   </div>

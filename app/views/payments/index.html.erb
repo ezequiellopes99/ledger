@@ -1,10 +1,3 @@
-<%# TODO: refactor DRY %>
-<% if notice.present? %>
-  <div class="alert alert-success">
-    <%= notice %>
-  </div>
-<% end %>
-
 <h1>Pagamentos</h1>
 
 <%= link_to new_payment_path, class: 'btn btn-light btn-sm' do %>
@@ -41,3 +34,4 @@
     </tbody>
   </table>
 </div>
+<%= will_paginate @payments %>

@@ -47,6 +47,12 @@
     <% end %>
 
     <div class="container-fluid my-5 py-4">
+      
+      <% if notice.present? %>
+        <div class="alert alert-success">
+          <%= notice %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>
